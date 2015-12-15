@@ -10,7 +10,7 @@ of object. Strings, numbers, arrays, or any object.
 ## Status
 
 - [![Gem Version](https://badge.fury.io/rb/rails-settings-cached.png)](https://rubygems.org/gems/rails-settings-cached)
-- [![CI Status](https://travis-ci.org/RobotJiang/ruby-settings-cached.svg)](http://travis-ci.org/huacnlee/rails-settings-cached)
+- [![CI Status](https://travis-ci.org/RobotJiang/ruby-settings-cached.svg)](https://travis-ci.org/RobotJiang/ruby-settings-cached)
 
 ## Setup
 
@@ -21,7 +21,7 @@ Edit your Gemfile:
 gem "ruby-settings-cached", "0.1"
 ```
 
-Generate your settings:
+Generate your settings if you use Rails:
 
 ```bash
 $ rails g settings <settings_name>
