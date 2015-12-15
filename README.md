@@ -10,19 +10,15 @@ of object. Strings, numbers, arrays, or any object.
 ## Status
 
 - [![Gem Version](https://badge.fury.io/rb/rails-settings-cached.png)](https://rubygems.org/gems/rails-settings-cached)
-- [![CI Status](https://api.travis-ci.org/huacnlee/rails-settings-cached.png)](http://travis-ci.org/huacnlee/rails-settings-cached)
+- [![CI Status](https://travis-ci.org/RobotJiang/ruby-settings-cached.svg)](http://travis-ci.org/huacnlee/rails-settings-cached)
 
 ## Setup
 
 Edit your Gemfile:
 
 ```ruby
-# Rails 4.1.x
-gem "rails-settings-cached", "~> 0.4.0"
-# Rails 4+
-gem "rails-settings-cached", "0.3.1"
-# Rails 3.x
-gem "rails-settings-cached", "0.2.4"
+# Rails 4+ project or Only ruby project
+gem "ruby-settings-cached", "0.1"
 ```
 
 Generate your settings:
@@ -31,12 +27,6 @@ Generate your settings:
 $ rails g settings <settings_name>
 ```
 
-Note: If you migrating from gem `rails-settings` then make sure you have it in your model
-
-```ruby
-class Settings < RailsSettings::CachedSettings
-  ...
-end
 ```
 
 Now just put that migration in the database with:
