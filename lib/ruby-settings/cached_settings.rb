@@ -19,6 +19,9 @@ module RubySettings
     end
 
     class << self
+    
+      include RubySettings::ConfigurationHelpers
+      
       def cache_prefix(&block)
         @cache_prefix = block
       end
@@ -31,7 +34,7 @@ module RubySettings
       end
 
       def [](var_name)
-        value = RubySettings.config.cache_store.fetch(cache_key(var_name, @object)) do
+        value = cache_store.fetch(cache_key(var_name, @object)) do
           super(var_name)
         end
 
