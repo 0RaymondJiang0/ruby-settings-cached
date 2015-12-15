@@ -22,7 +22,7 @@ module RubySettings
     extend ActiveSupport::Concern
 
     def cache_store
-      @cache_store ||= (RubySettings.config.cache_store || ActiveSupport::Cache::MemoryStore.new)
+      @cache_store ||= (RubySettings.config.cache_store || (defined?(Rails) ? Rails.cache : ActiveSupport::Cache::MemoryStore.new))
     end
 
   end
