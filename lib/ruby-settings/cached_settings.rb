@@ -1,11 +1,17 @@
-module RailsSettings
-  class CachedSettings < Settings
+module RubySettings
+  class CachedSettings < Settings 
+    after_update :rewrite_cache    
+    after_create :rewrite_cache
+    after_destroy :expire_cache 
+
+    include RubySettings::ConfigurationHelpers
+
     def rewrite_cache
-      Rails.cache.write(cache_key, value)
+      cache_store.write(cache_key, value)
     end
 
     def expire_cache
-      Rails.cache.delete(cache_key)
+      cache_store.delete(cache_key)
     end
 
     def cache_key
@@ -25,7 +31,7 @@ module RailsSettings
       end
 
       def [](var_name)
-        value = Rails.cache.fetch(cache_key(var_name, @object)) do
+        value = RubySettings.config.cache_store.fetch(cache_key(var_name, @object)) do
           super(var_name)
         end
 

@@ -1,4 +1,4 @@
-module RailsSettings
+module RubySettings
   class Settings < ActiveRecord::Base
     self.table_name = table_name_prefix + 'settings'
 

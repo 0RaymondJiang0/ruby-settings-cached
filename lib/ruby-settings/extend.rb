@@ -1,4 +1,4 @@
-module RailsSettings
+module RubySettings
   module Extend
     extend ActiveSupport::Concern
 

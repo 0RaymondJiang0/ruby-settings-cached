@@ -1,24 +1,27 @@
 require 'rspec'
-require 'rails/all'
+require 'active_record'
+require 'active_support'
 require 'sqlite3'
-require_relative '../lib/rails-settings/settings.rb'
 
-if RailsSettings::Settings.respond_to? :raise_in_transactional_callbacks=
-  RailsSettings::Settings.raise_in_transactional_callbacks = true
-end
-require_relative '../lib/rails-settings-cached'
+require_relative '../lib/ruby-settings/settings.rb'
 
-module Rails
-  def self.cache
-    @cache ||= ActiveSupport::Cache::MemoryStore.new
-  end
+
+if RubySettings::Settings.respond_to? :raise_in_transactional_callbacks=
+  RubySettings::Settings.raise_in_transactional_callbacks = true
 end
+require_relative '../lib/ruby-settings-cached'
+
+
+RubySettings.configure do |config|
+  config.cache_store = ActiveSupport::Cache::MemoryStore.new
+end
+
 
 def count_queries &block
   count = 0
 
   counter_f = ->(name, started, finished, unique_id, payload) {
-    unless payload[:name].in? %w[ CACHE SCHEMA ]
+    unless %w[ CACHE SCHEMA ].include?(payload[:name])
       count += 1
     end
   }
@@ -28,8 +31,6 @@ def count_queries &block
   count
 end
 
-# run cache initializers
-RailsSettings::Railtie.initializers.each{|initializer| initializer.run }
 
 # ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: ':memory:'
@@ -56,19 +57,19 @@ end
 
 RSpec.configure do |config|
   config.before(:all) do
-    class Setting < RailsSettings::CachedSettings
+    class Setting < RubySettings::CachedSettings
     end
 
-    class CustomSetting < RailsSettings::CachedSettings
+    class CustomSetting < RubySettings::CachedSettings
       table_name = 'custom_settings'
     end
 
     class User < ActiveRecord::Base
-      include RailsSettings::Extend
+      include RubySettings::Extend
     end
 
     ActiveRecord::Base.connection.execute('delete from settings')
-    Rails.cache.clear
+    RubySettings.config.cache_store.clear
   end
 
   config.after(:all) do

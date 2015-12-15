@@ -1,3 +1,3 @@
-# RailsSettings Model
-class <%= class_name %> < RailsSettings::CachedSettings
+# RubySettings Model
+class <%= class_name %> < RubySettings::CachedSettings
 end

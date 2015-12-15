@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RailsSettings do
+describe RubySettings do
   before(:all) do
     @str = 'Foo bar'
     @tm = Time.now

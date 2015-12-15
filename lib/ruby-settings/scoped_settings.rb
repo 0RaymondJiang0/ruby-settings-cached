@@ -1,4 +1,4 @@
-module RailsSettings
+module RubySettings
   class ScopedSettings < CachedSettings
     def self.for_thing(object)
       @object = object

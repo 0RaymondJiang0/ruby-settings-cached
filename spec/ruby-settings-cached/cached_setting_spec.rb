@@ -1,6 +1,6 @@
 require 'spec_helper'
-
-describe RailsSettings::CachedSettings do
+#bundle exec rspec ./spec/ruby-settings-cached/cached_setting_spec.rb
+describe RubySettings::CachedSettings do
   describe '.cache_key' do
     it 'should work with instance method' do
       obj = Setting.unscoped.first
@@ -63,7 +63,7 @@ describe RailsSettings::CachedSettings do
 
   it "caches values from db" do
     described_class["some_random_key"] = "asd"
-    Rails.cache.clear
+    RubySettings.config.cache_store.clear
 
     queries_count = count_queries do
       expect(described_class["some_random_key"]).to eq("asd")
