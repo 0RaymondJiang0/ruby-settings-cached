@@ -40,7 +40,8 @@ Configuraton:
 
 ```config
 RubySettings.configure do |config|
-  # or memcached store, redis store, if you are using rails, the cache store is Rails.cache default, you need not to config it.
+  # set cache store, it may be memcached store or redis store. 
+  # if you are using rails, the cache store is Rails.cache default, you need not to config it.
   config.cache_store = ActiveSupport::Cache::MemoryStore.new  
 end
 ```
