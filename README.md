@@ -1,7 +1,7 @@
 # Settings Gem
 
-This is improved from [rails-settings](https://github.com/ledermann/rails-settings),
-added caching for all settings. Settings is a plugin that makes managing a table of
+This is improved from [rails-settings-cached](https://github.com/huacnlee/rails-settings-cached),
+remove rails dependency. Settings is a plugin that makes managing a table of
 global key, value pairs easy. Think of it like a global Hash stored in your database,
 that uses simple ActiveRecord like methods for manipulation. Keep track of any global
 setting that you dont want to hard code into your rails app. You can store any kind
@@ -9,7 +9,7 @@ of object. Strings, numbers, arrays, or any object.
 
 ## Status
 
-- [![Gem Version](https://badge.fury.io/rb/rails-settings-cached.png)](https://rubygems.org/gems/rails-settings-cached)
+- [![Gem Version](https://badge.fury.io/rb/rails-settings-cached.png)](https://badge.fury.io/rb/ruby-settings-cached.svg)
 - [![CI Status](https://travis-ci.org/RobotJiang/ruby-settings-cached.svg)](https://travis-ci.org/RobotJiang/ruby-settings-cached)
 
 ## Setup
