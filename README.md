@@ -35,12 +35,16 @@ Now just put that migration in the database with:
 rake db:migrate
 ```
 
+Configuraton: 
+
+
 ```config
 RubySettings.configure do |config|
   # or memcached store, redis store, if you are using rails, the cache store is Rails.cache default, you need not to config it.
   config.cache_store = ActiveSupport::Cache::MemoryStore.new  
 end
 ```
+
 ## Usage
 
 The syntax is easy.  First, lets create some settings to keep track of:
